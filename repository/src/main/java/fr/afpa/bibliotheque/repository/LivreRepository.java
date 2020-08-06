@@ -1,14 +1,14 @@
 package fr.afpa.bibliotheque.repository;
 
 import java.util.List;
-import fr.afpa.bibliotheque.data.Livres;
+import fr.afpa.bibliotheque.data.Livre;
 
 public interface LivreRepository {
 	void createLivre(String titre, String description, String isbn, String code);
 
 	void deleteLivre(String isbn);
 
-	List<Livres> findLivreByTitle(String titre);
+	List<Livre> findLivreByTitle(String titre);
 
 	String findAll();
 }

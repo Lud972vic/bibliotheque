@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import fr.afpa.bibliotheque.data.Livres;
+import fr.afpa.bibliotheque.data.Livre;
 import fr.afpa.bibliotheque.repository.LivreRepository;
 
 @Repository("livreRepository")
@@ -17,7 +17,7 @@ public class LivreRepositoryImpl implements LivreRepository {
 
 	@Override
 	public void createLivre(String titre, String description, String isbn, String code) {
-		String query = "insert into Livres (titre, description, isbn, code) values(?,?,?,?)";
+		String query = "insert into Livre (titre, description, isbn, code) values(?,?,?,?)";
 		jdbcTemplate.update(query, titre, description, isbn, code);
 	}
 
@@ -27,14 +27,14 @@ public class LivreRepositoryImpl implements LivreRepository {
 	}
 
 	@Override
-	public List<Livres> findLivreByTitle(String titre) {
+	public List<Livre> findLivreByTitle(String titre) {
 		String query = "SELECT titre, description, isbn, code FROM Livres WHERE titre LIKE ?";
 		return jdbcTemplate.query(query, new Object[] { "%" + titre + "%" }, new LivresMapper());
 	}
 
-	private static final class LivresMapper implements RowMapper<Livres> {
-		public Livres mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Livres msg = new Livres();
+	private static final class LivresMapper implements RowMapper<Livre> {
+		public Livre mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Livre msg = new Livre();
 			msg.setTitre(rs.getString("titre"));
 			return msg;
 		}

@@ -43,8 +43,6 @@ public class BibliothequeMain {
 		System.out.println("show livres de la categores loisirs "+ nbr);
 		
 
-//		JdbcTemplate jdbcTemplate = (JdbcTemplate) ctx.getBean("livreRepository");
-//		System.out.println(jdbcTemplate);
 	}
 
 
