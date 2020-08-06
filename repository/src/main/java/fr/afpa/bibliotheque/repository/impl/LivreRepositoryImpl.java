@@ -16,19 +16,19 @@ public class LivreRepositoryImpl implements LivreRepository {
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public void createLivre(String titre, String description, String isbn, String code) {
+	public void setRepoCreateLivre(String titre, String description, String isbn, String code) {
 		String query = "insert into Livre (titre, description, isbn, code) values(?,?,?,?)";
 		jdbcTemplate.update(query, titre, description, isbn, code);
 	}
 
 	@Override
-	public void deleteLivre(String isbn) {
-		jdbcTemplate.update("delete from Livres where idlivres = ?", isbn);
+	public void setRepoDeleteLivre(String isbn) {
+		jdbcTemplate.update("delete from Livre where idlivre  = ?", isbn);
 	}
 
 	@Override
-	public List<Livre> findLivreByTitle(String titre) {
-		String query = "SELECT titre, description, isbn, code FROM Livres WHERE titre LIKE ?";
+	public List<Livre> getRepoFindLivreByTitle(String titre) {
+		String query = "SELECT titre, description, isbn, code FROM Livre WHERE titre LIKE ?";
 		return jdbcTemplate.query(query, new Object[] { "%" + titre + "%" }, new LivresMapper());
 	}
 

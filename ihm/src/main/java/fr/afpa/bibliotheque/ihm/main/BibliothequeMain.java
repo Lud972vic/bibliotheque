@@ -8,6 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import fr.afpa.bibliotheque.business.ExempleLivreBusiness;
+import fr.afpa.bibliotheque.business.LivreBusiness;
 import fr.afpa.bibliotheque.business.TestBusiness;
 import fr.afpa.bibliotheque.ihm.config.MainConfig;
 import lombok.extern.log4j.Log4j;
@@ -42,6 +43,9 @@ public class BibliothequeMain {
 		int nbr = livre.getLibreByCategory("losirs");
 		System.out.println("show livres de la categores loisirs "+ nbr);
 		
+		LivreBusiness livreB = (LivreBusiness) ctx.getBean("livreBusinessImpl");
+		livreB.setBusinessCreateLivre("test", "afffff", "114", "44");
+		log.info("yes");
 
 	}
 
