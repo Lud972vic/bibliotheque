@@ -48,4 +48,9 @@ public class LivreServiceImplementation implements LivreServiceInterface {
 		return monLivreRepository.getRepositoryFindLivreByTitle(titre);
 	}
 
+	@Override
+	public String getAuteurHesite(String auteur) {
+		return monLivreRepository.getAuteurHesite(auteur);
+	}
+
 }

@@ -1,8 +1,10 @@
 package fr.afpa.bibliotheque.business.impl;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import fr.afpa.bibliotheque.business.LivreBusiness;
 import fr.afpa.bibliotheque.data.Livre;
 import fr.afpa.bibliotheque.service.LivreServiceInterface;
@@ -35,5 +37,10 @@ public class LivreBusinessImpl implements LivreBusiness {
 	@Override
 	public void setBusinessCreateLivreComplet(String titre, String description, String isbn, String code, String auteur,
 			String nomemplacement, String theme) {
+	}
+
+	@Override
+	public String getAuteurHesite(String auteur) {
+		 return livreService.getAuteurHesite(auteur);
 	}
 }

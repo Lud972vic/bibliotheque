@@ -19,4 +19,6 @@ public interface LivreRepositoryInterface {
 
 	void setBusinessCreateLivreComplet(String titre, String description, String isbn, String code, String auteur,
 			String nomemplacement, String theme);
+	
+	String getAuteurHesite(String auteur);
 }

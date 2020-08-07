@@ -15,4 +15,6 @@ public interface LivreBusiness {
 	
 	public void setBusinessCreateLivreComplet(String titre, String description, String isbn, 
 			String code, String auteur, String nomemplacement, String theme);
+	
+	public String getAuteurHesite(String auteur);
 }

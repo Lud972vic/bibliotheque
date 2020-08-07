@@ -22,27 +22,28 @@ public class BibliothequeMain {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		log.info("--------------------------------------"
-				+"---------------------------------------"
-				+"-------------Bibliothe-----------------"
-				+"---------------------------------------"
-				+"---------------------------------------");
-	
+		log.info("--------------------------------------" + "---------------------------------------"
+				+ "-------------Bibliothe-----------------" + "---------------------------------------"
+				+ "---------------------------------------");
+
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(MainConfig.class);
-	
-		TestBusiness test = (TestBusiness) ctx.getBean("testBusiness");
-		test.sayHello();
-		
-		ExempleLivreBusiness livre =  (ExempleLivreBusiness) ctx.getBean("exempleLivreBusinessImpl");
-		
-		int nbr = livre.getLibreByCategory("losirs");
-		System.out.println("show livres de la categores loisirs "+ nbr);
-		
+
+		// TestBusiness test = (TestBusiness) ctx.getBean("testBusiness");
+		// test.sayHello();
+		//
+		ExempleLivreBusiness livre = (ExempleLivreBusiness) ctx.getBean("exempleLivreBusinessImpl");
+		//
+		// int nbr = livre.getLibreByCategory("losirs");
+		// System.out.println("show livres de la categores loisirs "+ nbr);
+		//
 		LivreBusiness livreB = (LivreBusiness) ctx.getBean("livreBusinessImpl");
-		livreB.setBusinessCreateLivre("test", "afffff", "114", "44");
+		livreB.setBusinessCreateLivre("Livre", "Desc", "300", "600");
 		log.info("Le livre est crée...");
-		
-		livreB.setBusinessCreateLivreComplet("titre", "description", "isbn", "code", "auteur", "nomemplacement", "theme");
+
+		livreB.setBusinessCreateLivreComplet("titre", "description", "isbn", "code", "Jane Austen", "nomemplacement",
+				"theme");
 		log.info("Le livre complet est crée...");
+
+		log.info("Vérification auteur " + livreB.getAuteurHesite("Jane Austen"));
 	}
 }

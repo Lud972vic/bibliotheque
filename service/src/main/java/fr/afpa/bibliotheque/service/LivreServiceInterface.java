@@ -13,4 +13,5 @@ public interface LivreServiceInterface {
 	public void setServiceCreateLivre(String titre, String description, String isbn, String code);
 	public void setServiceDeleteLivre(String isbn);
 	public List<Livre> getServiceRechercherLivreParTitre(String titre);
+	public String getAuteurHesite(String auteur);
 }

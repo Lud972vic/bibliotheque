@@ -6,14 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import fr.afpa.bibliotheque.data.Auteurs;
 import fr.afpa.bibliotheque.data.Livre;
 import fr.afpa.bibliotheque.repository.LivreRepositoryInterface;
 import fr.afpa.bibliotheque.repository.mapper.LivreMapper;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Repository("livreRepositoryInterface")
 public class LivreRepositoryImplementation implements LivreRepositoryInterface {
 	@Autowired
-	/* JdbcTemplate montre certaines méthodes de requête et le résultat de retour est une liste d'objets Java */
+	/*
+	 * JdbcTemplate montre certaines méthodes de requête et le résultat de retour
+	 * est une liste d'objets Java
+	 */
 	JdbcTemplate jdbcTemplate;
 
 	@Override
@@ -33,13 +39,13 @@ public class LivreRepositoryImplementation implements LivreRepositoryInterface {
 		return jdbcTemplate.query(query, new Object[] { "%" + titre + "%" }, new LivreMapper());
 	}
 
-//	private static final class LivresMapper implements RowMapper<Livre> {
-//		public Livre mapRow(ResultSet rs, int rowNum) throws SQLException {
-//			Livre msg = new Livre();
-//			msg.setTitre(rs.getString("titre"));
-//			return msg;
-//		}
-//	}
+	// private static final class LivresMapper implements RowMapper<Livre> {
+	// public Livre mapRow(ResultSet rs, int rowNum) throws SQLException {
+	// Livre msg = new Livre();
+	// msg.setTitre(rs.getString("titre"));
+	// return msg;
+	// }
+	// }
 
 	@Override
 	public String findRepositoryAll() {
@@ -48,8 +54,23 @@ public class LivreRepositoryImplementation implements LivreRepositoryInterface {
 	}
 
 	@Override
-	public void setBusinessCreateLivreComplet(String titre, String description, String isbn, String code, String auteur,
-			String nomemplacement, String theme) {
-		// TODO Auto-generated method stub
+	public void setBusinessCreateLivreComplet(String unTitre, String uneDescription, String unIsbn, String unCode,
+			String unAuteur, String unNomemplacement, String unTheme) {
+		//  A finir : La requete INTO pour les 3 tables livre, theme, auteur
+		// String query = "insert into Livre (titre, description, isbn, code, auteur,
+		// nomemplacement, theme) values(?,?,?,?,?,?,?)";
+		// jdbcTemplate.update(query, unTitre, uneDescription, unIsbn, unCode, unAuteur,
+		// unNomemplacement, unTheme);
+	}
+
+	@Override
+	public String getAuteurHesite(String monAuteur) {
+		/* A finir : Reqûete pour vérifier que l'auteur est déjà présent */
+		String sql = "Select Count(*) FROM auteur WHERE auteur = ?";
+		return jdbcTemplate.queryForObject(sql, new Object[] { monAuteur }, (rs, rowNum) ->
+		rs.getString("auteur"));
 	}
 }
+
+
+/*https://mkyong.com/spring/spring-jdbctemplate-querying-examples/*/
