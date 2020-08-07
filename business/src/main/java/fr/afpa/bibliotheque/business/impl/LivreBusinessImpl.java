@@ -12,7 +12,7 @@ import fr.afpa.bibliotheque.service.LivreServiceInterface;
 @Component
 public class LivreBusinessImpl implements LivreBusiness {
 	@Autowired
-	LivreServiceInterface livreService;
+	LivreServiceInterface livreServiceInterface;
 	/* Ajouter les services Emplacemement, Auteur et Theme
 	 * AuteurServiceInterface auteurService;
 	 * ThemeServiceInterface themeService;
@@ -21,26 +21,21 @@ public class LivreBusinessImpl implements LivreBusiness {
 
 	@Override
 	public void setBusinessCreateLivre(String titre, String description, String isbn, String code) {
-		livreService.setServiceCreateLivre(titre, description, isbn, code);
+		livreServiceInterface.setServiceCreateLivre(titre, description, isbn, code);
 	}
 
 	@Override
 	public void setBusinessDeleteLivre(String isbn) {
-		livreService.setServiceDeleteLivre(isbn);
+		livreServiceInterface.setServiceDeleteLivre(isbn);
 	}
 
 	@Override
 	public List<Livre> getBusinessRechercherLivreParTitre(String titre) {
-		return livreService.getServiceRechercherLivreParTitre(titre);
+		return livreServiceInterface.getServiceRechercherLivreParTitre(titre);
 	}
 
 	@Override
 	public void setBusinessCreateLivreComplet(String titre, String description, String isbn, String code, String auteur,
 			String nomemplacement, String theme) {
-	}
-
-	@Override
-	public String getAuteurHesite(String auteur) {
-		 return livreService.getAuteurHesite(auteur);
 	}
 }

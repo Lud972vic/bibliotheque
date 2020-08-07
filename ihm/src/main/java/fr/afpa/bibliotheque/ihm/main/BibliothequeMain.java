@@ -6,9 +6,8 @@ package fr.afpa.bibliotheque.ihm.main;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import fr.afpa.bibliotheque.business.ExempleLivreBusiness;
+import fr.afpa.bibliotheque.business.AuteurBusiness;
 import fr.afpa.bibliotheque.business.LivreBusiness;
-import fr.afpa.bibliotheque.business.TestBusiness;
 import fr.afpa.bibliotheque.ihm.config.MainConfig;
 import lombok.extern.log4j.Log4j;
 
@@ -30,20 +29,23 @@ public class BibliothequeMain {
 
 		// TestBusiness test = (TestBusiness) ctx.getBean("testBusiness");
 		// test.sayHello();
-		//
-		ExempleLivreBusiness livre = (ExempleLivreBusiness) ctx.getBean("exempleLivreBusinessImpl");
-		//
+
+		// ExempleLivreBusiness livre = (ExempleLivreBusiness)
+		// ctx.getBean("exempleLivreBusinessImpl");
+
 		// int nbr = livre.getLibreByCategory("losirs");
 		// System.out.println("show livres de la categores loisirs "+ nbr);
-		//
-		LivreBusiness livreB = (LivreBusiness) ctx.getBean("livreBusinessImpl");
-		livreB.setBusinessCreateLivre("Livre", "Desc", "300", "600");
+
 		log.info("Le livre est crée...");
+		LivreBusiness livreBusiness = (LivreBusiness) ctx.getBean("livreBusinessImpl");
+		livreBusiness.setBusinessCreateLivre("Livre", "Desc", "300", "600");
 
-		livreB.setBusinessCreateLivreComplet("titre", "description", "isbn", "code", "Jane Austen", "nomemplacement",
-				"theme");
 		log.info("Le livre complet est crée...");
+		livreBusiness.setBusinessCreateLivreComplet("titre", "description", "isbn", "code", "Jane Austen",
+				"nomemplacement", "theme");
 
-		log.info("Vérification auteur " + livreB.getAuteurHesite("Jane Austen"));
+		log.info("Recherche un auteur");
+		AuteurBusiness auteurBusiness = (AuteurBusiness) ctx.getBean("auteurBusinessImpl");
+		System.out.println(auteurBusiness.getBusinessAuteurHesite("Todd Miranda"));
 	}
 }

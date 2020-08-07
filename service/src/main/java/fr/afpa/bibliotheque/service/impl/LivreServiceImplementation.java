@@ -25,32 +25,28 @@ import fr.afpa.bibliotheque.service.LivreServiceInterface;
 @Service
 public class LivreServiceImplementation implements LivreServiceInterface {
 	@Autowired
-	/* @Autowired c’est une annotation qui nous permet de faire l’injection de dépendances entre les beans 
-	 * de l’application (Spring va tout faire), il suffit juste d’annoter un constructeur ou 
-	 * une méthode avec cette dernière. et le conteneur Spring va faire la suite
-	 * (La creation du bean, le chercher et l’injecter automatiquement…).
+	/*
+	 * @Autowired c’est une annotation qui nous permet de faire l’injection de
+	 * dépendances entre les beans de l’application (Spring va tout faire), il
+	 * suffit juste d’annoter un constructeur ou une méthode avec cette dernière. et
+	 * le conteneur Spring va faire la suite (La creation du bean, le chercher et
+	 * l’injecter automatiquement…).
 	 */
-	
-	LivreRepositoryInterface monLivreRepository;
+
+	LivreRepositoryInterface monLivreRepositoryInterface;
 
 	@Override
 	public void setServiceCreateLivre(String titre, String description, String isbn, String code) {
-		monLivreRepository.setRepositoryCreateLivre(titre, description, isbn, code);
+		monLivreRepositoryInterface.setRepositoryCreateLivre(titre, description, isbn, code);
 	}
 
 	@Override
 	public void setServiceDeleteLivre(String isbn) {
-		monLivreRepository.setRepositoryDeleteLivre(isbn);
+		monLivreRepositoryInterface.setRepositoryDeleteLivre(isbn);
 	}
 
 	@Override
 	public List<Livre> getServiceRechercherLivreParTitre(String titre) {
-		return monLivreRepository.getRepositoryFindLivreByTitle(titre);
+		return monLivreRepositoryInterface.getRepositoryFindLivreByTitle(titre);
 	}
-
-	@Override
-	public String getAuteurHesite(String auteur) {
-		return monLivreRepository.getAuteurHesite(auteur);
-	}
-
 }
