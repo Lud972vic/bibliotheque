@@ -17,7 +17,7 @@ public class TestBusiness {
 	
 	public void sayHello() {
 		
-		log.info("Hello business");
+		//log.info("Hello business");
 		
 		
 		

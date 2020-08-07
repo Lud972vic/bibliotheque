@@ -7,6 +7,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.mysql.cj.log.Log;
+
 import fr.afpa.bibliotheque.business.ExempleLivreBusiness;
 import fr.afpa.bibliotheque.business.LivreBusiness;
 import fr.afpa.bibliotheque.business.TestBusiness;
@@ -19,18 +21,14 @@ import lombok.extern.log4j.Log4j;
  */
 @Log4j
 public class BibliothequeMain {
-	
-	
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		log.info("--------------------------------------"
+			/*	log.info("-------------Bibliothe-----------------"
 				+"---------------------------------------"
-				+"-------------Bibliothe-----------------"
-				+"---------------------------------------"
-				+"---------------------------------------");
+				+"---------------------------------------");*/
 	
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(MainConfig.class);
 	
@@ -45,7 +43,7 @@ public class BibliothequeMain {
 		
 		LivreBusiness livreB = (LivreBusiness) ctx.getBean("livreBusinessImpl");
 		livreB.setBusinessCreateLivre("test", "afffff", "114", "44");
-		log.info("yes");
+		//log.info("yes");
 
 	}
 
