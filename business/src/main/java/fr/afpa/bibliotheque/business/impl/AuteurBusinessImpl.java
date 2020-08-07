@@ -13,7 +13,7 @@ public class AuteurBusinessImpl implements AuteurBusiness {
 	AuteurServiceInterface auteurServiceInterface;
 
 	@Override
-	public String getBusinessAuteurHesite(String auteur) {
+	public int getBusinessAuteurHesite(String auteur) {
 		return auteurServiceInterface.getServiceAuteurHesite(auteur);
 	}
 }

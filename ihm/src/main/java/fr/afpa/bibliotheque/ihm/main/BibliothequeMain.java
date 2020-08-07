@@ -36,13 +36,13 @@ public class BibliothequeMain {
 		// int nbr = livre.getLibreByCategory("losirs");
 		// System.out.println("show livres de la categores loisirs "+ nbr);
 
-		log.info("Le livre est crée...");
-		LivreBusiness livreBusiness = (LivreBusiness) ctx.getBean("livreBusinessImpl");
-		livreBusiness.setBusinessCreateLivre("Livre", "Desc", "300", "600");
-
-		log.info("Le livre complet est crée...");
-		livreBusiness.setBusinessCreateLivreComplet("titre", "description", "isbn", "code", "Jane Austen",
-				"nomemplacement", "theme");
+//		log.info("Le livre est crée...");
+//		LivreBusiness livreBusiness = (LivreBusiness) ctx.getBean("livreBusinessImpl");
+//		livreBusiness.setBusinessCreateLivre("Livre", "Desc", "300", "600");
+//
+//		log.info("Le livre complet est crée...");
+//		livreBusiness.setBusinessCreateLivreComplet("titre", "description", "isbn", "code", "Jane Austen",
+//				"nomemplacement", "theme");
 
 		AuteurBusiness auteurBusiness = (AuteurBusiness) ctx.getBean("auteurBusinessImpl");
 		log.info("Retourne 1 s'il hésite un auteur, sinon 0 : "
