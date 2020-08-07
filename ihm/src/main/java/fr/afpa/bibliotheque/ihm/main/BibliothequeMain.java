@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import fr.afpa.bibliotheque.business.AuteurBusiness;
-import fr.afpa.bibliotheque.business.LivreBusiness;
+import fr.afpa.bibliotheque.business.ThemeBusiness;
 import fr.afpa.bibliotheque.ihm.config.MainConfig;
 import lombok.extern.log4j.Log4j;
 
@@ -47,5 +47,8 @@ public class BibliothequeMain {
 		AuteurBusiness auteurBusiness = (AuteurBusiness) ctx.getBean("auteurBusinessImpl");
 		log.info("Retourne 1 s'il hésite un auteur, sinon 0 : "
 				+ auteurBusiness.getBusinessAuteurHesite("Jason N. Gaylord"));
+
+		ThemeBusiness themeBusiness = (ThemeBusiness) ctx.getBean("themeBusinessImpl");
+		log.info("Retourne 1 s'il hésite le theme, sinon 0 : " + themeBusiness.getBusinessThemeHesite("Fiction"));
 	}
 }

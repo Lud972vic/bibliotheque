@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import fr.afpa.bibliotheque.business.AuteurBusiness;
-import fr.afpa.bibliotheque.data.Auteurs;
 import fr.afpa.bibliotheque.service.AuteurServiceInterface;
 
 @Component
