@@ -14,14 +14,8 @@ import lombok.extern.log4j.Log4j;
 @Component
 @Log4j
 public class TestBusiness {
-	
 	public void sayHello() {
-		
 		log.info("Hello business");
 		
-		
-		
 	}
-	
-
 }

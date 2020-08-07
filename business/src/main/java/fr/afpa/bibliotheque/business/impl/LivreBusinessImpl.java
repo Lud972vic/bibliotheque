@@ -5,12 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import fr.afpa.bibliotheque.business.LivreBusiness;
 import fr.afpa.bibliotheque.data.Livre;
-import fr.afpa.bibliotheque.service.LivreService;
+import fr.afpa.bibliotheque.service.LivreServiceInterface;
 
 @Component
 public class LivreBusinessImpl implements LivreBusiness {
 	@Autowired
-	LivreService livreService;
+	LivreServiceInterface livreService;
+	/* Ajouter les services Emplacemement, Auteur et Theme
+	 * AuteurServiceInterface auteurService;
+	 * ThemeServiceInterface themeService;
+	 * EmplacementServiceInterface emplacementService;
+	 */
 
 	@Override
 	public void setBusinessCreateLivre(String titre, String description, String isbn, String code) {
@@ -25,5 +30,10 @@ public class LivreBusinessImpl implements LivreBusiness {
 	@Override
 	public List<Livre> getBusinessRechercherLivreParTitre(String titre) {
 		return livreService.getServiceRechercherLivreParTitre(titre);
-	}	
+	}
+
+	@Override
+	public void setBusinessCreateLivreComplet(String titre, String description, String isbn, String code, String auteur,
+			String nomemplacement, String theme) {
+	}
 }
