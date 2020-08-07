@@ -13,7 +13,7 @@ public class AuteurServiceImplementation implements AuteurServiceInterface {
 	AuteurRepositoryInterface monAuteurRepositoryInterface;
 
 	@Override
-	public Auteurs getServiceAuteurHesite(String auteur) {
+	public String getServiceAuteurHesite(String auteur) {
 		return monAuteurRepositoryInterface.getRepositoryAuteurHesite(auteur);
 	}
 }

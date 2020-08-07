@@ -44,8 +44,8 @@ public class BibliothequeMain {
 		livreBusiness.setBusinessCreateLivreComplet("titre", "description", "isbn", "code", "Jane Austen",
 				"nomemplacement", "theme");
 
-		log.info("Recherche un auteur");
+		log.info("Recherche un auteur 1 OUI 0 NON");
 		AuteurBusiness auteurBusiness = (AuteurBusiness) ctx.getBean("auteurBusinessImpl");
-		System.out.println(auteurBusiness.getBusinessAuteurHesite("Todd Miranda"));
+		System.out.println(auteurBusiness.getBusinessAuteurHesite("Jason N. Gaylord"));
 	}
 }

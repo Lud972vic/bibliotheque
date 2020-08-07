@@ -14,8 +14,13 @@ public class AuteurRepositoryImplementation implements AuteurRepositoryInterface
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public Auteurs getRepositoryAuteurHesite(String auteur) {
+	public String getRepositoryAuteurHesite(String auteur) {
 		String query = "Select Count(*) FROM auteur WHERE auteur = ?";
-		return jdbcTemplate.queryForObject(query, new Object[] { auteur }, new AuteurMapper());
+		  
+
+
+		  
+		  return jdbcTemplate.queryForObject(
+				  query, new Object[]{auteur}, String.class);
 	}
 }
