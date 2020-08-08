@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import fr.afpa.bibliotheque.business.AuteurBusiness;
+import fr.afpa.bibliotheque.business.LivreBusiness;
 import fr.afpa.bibliotheque.business.ThemeBusiness;
 import fr.afpa.bibliotheque.ihm.config.MainConfig;
 import lombok.extern.log4j.Log4j;
@@ -36,13 +37,13 @@ public class BibliothequeMain {
 		// int nbr = livre.getLibreByCategory("losirs");
 		// System.out.println("show livres de la categores loisirs "+ nbr);
 
-//		log.info("Le livre est crée...");
-//		LivreBusiness livreBusiness = (LivreBusiness) ctx.getBean("livreBusinessImpl");
-//		livreBusiness.setBusinessCreateLivre("Livre", "Desc", "300", "600");
-//
-//		log.info("Le livre complet est crée...");
-//		livreBusiness.setBusinessCreateLivreComplet("titre", "description", "isbn", "code", "Jane Austen",
-//				"nomemplacement", "theme");
+		log.info("Le livre est crée...");
+		LivreBusiness livreBusiness = (LivreBusiness) ctx.getBean("livreBusinessImpl");
+		livreBusiness.setBusinessCreateLivre("Java et Eclipse", "Développez une application avec Maven, Spring...", "03214585", "98745878");
+
+		log.info("Le livre complet est crée...");
+		livreBusiness.setBusinessCreateLivreComplet("titre", "description", "isbn", "code", "Jane Austen",
+				"nomemplacement", "theme");
 
 		AuteurBusiness auteurBusiness = (AuteurBusiness) ctx.getBean("auteurBusinessImpl");
 		log.info("Retourne 1 s'il hésite un auteur, sinon 0 : "

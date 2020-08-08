@@ -1,9 +1,15 @@
 package fr.afpa.bibliotheque.repository.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import fr.afpa.bibliotheque.data.Livre;
@@ -21,8 +27,26 @@ public class LivreRepositoryImplementation implements LivreRepositoryInterface {
 
 	@Override
 	public void setRepositoryCreateLivre(String titre, String description, String isbn, String code) {
-		String query = "insert into Livre (titre, description, isbn, code) values(?,?,?,?)";
-		jdbcTemplate.update(query, titre, description, isbn, code);
+		final String INSERT_SQL = "insert into Livre (titre, description, isbn, code) values(?,?,?,?)";
+		final String monTitre = titre;
+		final String maDescription = description;
+		final String monIsbn = isbn;
+		final String monCode = code;
+
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+				PreparedStatement ps = connection.prepareStatement(INSERT_SQL, new String[] { "idlivre" });
+				ps.setString(1, monTitre);
+				ps.setString(2, maDescription);
+				ps.setString(3, monIsbn);
+				ps.setString(4, monCode);
+				return ps;
+			}
+		}, keyHolder);
+		
+		// keyHolder.getKey() now contains the generated key
+		System.out.println(keyHolder.getKey());
 	}
 
 	@Override

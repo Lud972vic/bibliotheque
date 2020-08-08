@@ -1,0 +1,10 @@
+Les étapes à faire :
+
+1 - dossier data / package fr.afpa.bibliotheque.data
+2 - dossier repository / package fr.afpa.bibliotheque.repository.mapper
+3 - dossier repository / package fr.afpa.bibliotheque.repository
+4 - dossier repository / package fr.afpa.bibliotheque.repository.impl
+5 - dossier service / package fr.afpa.bibliotheque.service
+6 - dossier service / package fr.afpa.bibliotheque.service.impl
+7 - dossier business / package fr.afpa.bibliotheque.business
+8 - dossier business / package fr.afpa.bibliotheque.business.impl
