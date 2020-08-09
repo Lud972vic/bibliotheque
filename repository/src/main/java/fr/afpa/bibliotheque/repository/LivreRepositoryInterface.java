@@ -1,5 +1,6 @@
 package fr.afpa.bibliotheque.repository;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import fr.afpa.bibliotheque.data.Livre;
@@ -9,14 +10,24 @@ import fr.afpa.bibliotheque.data.Livre;
  */
 
 public interface LivreRepositoryInterface {
+	/* Creation d'un livre */
 	void setRepositoryCreateLivre(String titre, String description, String isbn, String code);
 
-	void setRepositoryDeleteLivre(String isbn);
-
-	List<Livre> getRepositoryFindLivreByTitle(String titre);
-
-	String findRepositoryAll();
-
+	/*
+	 * Creation du livre, et affectation de l'auteur, du theme et de l'emplacement
+	 */
 	void setBusinessCreateLivreComplet(String titre, String description, String isbn, String code, String auteur,
 			String nomemplacement, String theme);
+
+	/* Recuperation de l'id du livre */
+	BigInteger getIdCreateLivre();
+
+	/* Suppresion du livre */
+	void setRepositoryDeleteLivre(String isbn);
+
+	/* Retourne des livres */
+	List<Livre> getRepositoryFindLivreByTitle(String titre);
+
+	/* Retourne tous les livres --TODO */
+	String findRepositoryAll();
 }

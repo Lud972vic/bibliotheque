@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import fr.afpa.bibliotheque.business.AuteurBusiness;
+import fr.afpa.bibliotheque.business.LivreAuteurBusiness;
 import fr.afpa.bibliotheque.business.LivreBusiness;
 import fr.afpa.bibliotheque.business.ThemeBusiness;
 import fr.afpa.bibliotheque.ihm.config.MainConfig;
@@ -40,7 +41,7 @@ public class BibliothequeMain {
 		log.info("Le livre est crée...");
 		LivreBusiness livreBusiness = (LivreBusiness) ctx.getBean("livreBusinessImpl");
 		livreBusiness.setBusinessCreateLivre("Java et Eclipse", "Développez une application avec Maven, Spring...", "03214585", "98745878");
-
+		
 		log.info("Le livre complet est crée...");
 		livreBusiness.setBusinessCreateLivreComplet("titre", "description", "isbn", "code", "Jane Austen",
 				"nomemplacement", "theme");
@@ -51,5 +52,9 @@ public class BibliothequeMain {
 
 		ThemeBusiness themeBusiness = (ThemeBusiness) ctx.getBean("themeBusinessImpl");
 		log.info("Retourne 1 s'il hésite le theme, sinon 0 : " + themeBusiness.getBusinessThemeHesite("Fiction"));
+		
+		log.info("Table de correspondance Livre <-> Auteur");
+		LivreAuteurBusiness livreAuteurBusiness = (LivreAuteurBusiness) ctx.getBean("livreAuteurBusinessImpl");
+		livreAuteurBusiness.setBusinessLivreAuteur(7, 4);
 	}
 }

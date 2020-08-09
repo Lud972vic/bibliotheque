@@ -6,9 +6,8 @@ import fr.afpa.bibliotheque.data.Livre;
 
 public interface LivreBusiness {
 
-	/*
-	 * Créer une méthode pour créer un livre avec l'auteur, le theme et
-	 * l'emplacement 20:00
+	/* Créer une méthode pour créer un livre avec l'auteur, le theme et
+	 * l'emplacement
 	 */
 	public void setBusinessCreateLivre(String titre, String description, String isbn, String code);
 

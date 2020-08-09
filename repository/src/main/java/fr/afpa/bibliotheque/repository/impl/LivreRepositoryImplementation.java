@@ -1,5 +1,6 @@
 package fr.afpa.bibliotheque.repository.impl;
 
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -18,6 +19,8 @@ import fr.afpa.bibliotheque.repository.mapper.LivreMapper;
 
 @Repository("livreRepositoryInterface")
 public class LivreRepositoryImplementation implements LivreRepositoryInterface {
+	private BigInteger key;
+
 	@Autowired
 	/*
 	 * JdbcTemplate montre certaines méthodes de requête et le résultat de retour
@@ -27,7 +30,7 @@ public class LivreRepositoryImplementation implements LivreRepositoryInterface {
 
 	@Override
 	public void setRepositoryCreateLivre(String titre, String description, String isbn, String code) {
-		final String INSERT_SQL = "insert into Livre (titre, description, isbn, code) values(?,?,?,?)";
+		final String INSERT_SQL = "Insert Into Livre (titre, description, isbn, code) values(?,?,?,?)";
 		final String monTitre = titre;
 		final String maDescription = description;
 		final String monIsbn = isbn;
@@ -44,9 +47,14 @@ public class LivreRepositoryImplementation implements LivreRepositoryInterface {
 				return ps;
 			}
 		}, keyHolder);
-		
+
 		// keyHolder.getKey() now contains the generated key
-		System.out.println(keyHolder.getKey());
+		this.key = (BigInteger) keyHolder.getKey();
+	}
+
+	@Override
+	public BigInteger getIdCreateLivre() {
+		return key;
 	}
 
 	@Override
@@ -60,27 +68,13 @@ public class LivreRepositoryImplementation implements LivreRepositoryInterface {
 		return jdbcTemplate.query(query, new Object[] { "%" + titre + "%" }, new LivreMapper());
 	}
 
-	// private static final class LivresMapper implements RowMapper<Livre> {
-	// public Livre mapRow(ResultSet rs, int rowNum) throws SQLException {
-	// Livre msg = new Livre();
-	// msg.setTitre(rs.getString("titre"));
-	// return msg;
-	// }
-	// }
-
 	@Override
 	public String findRepositoryAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void setBusinessCreateLivreComplet(String unTitre, String uneDescription, String unIsbn, String unCode,
-			String unAuteur, String unNomemplacement, String unTheme) {
-		// A finir : La requete INTO pour les 3 tables livre, theme, auteur
-		// String query = "insert into Livre (titre, description, isbn, code, auteur,
-		// nomemplacement, theme) values(?,?,?,?,?,?,?)";
-		// jdbcTemplate.update(query, unTitre, uneDescription, unIsbn, unCode, unAuteur,
-		// unNomemplacement, unTheme);
+			String unAuteur, String unNomemplacement, String unTheme) {	
 	}
 }
